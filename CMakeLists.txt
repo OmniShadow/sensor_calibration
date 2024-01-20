@@ -4,11 +4,6 @@ project(calibrate VERSION 0.1.0 LANGUAGES C CXX)
 
 add_executable(calibrate calibration.cpp)
 
-add_subdirectory(csvlogger)
-add_subdirectory(distance_sensor)
-add_subdirectory(meca500_ethercat_cpp)
-add_subdirectory(calibration_lib)
-
 target_link_libraries(calibrate PRIVATE csvlogger)
 target_link_libraries(calibrate PRIVATE distance_sensor)
 target_link_libraries(calibrate PRIVATE meca500_driver)
