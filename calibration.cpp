@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
         {
             cout << "Please position the obstacle in front of the sensor" << endl
                  << "Press enter to continue..." << endl;
-            c = getchar();
+            getchar();
         }
 
         cout << "Measuring distance..." << endl;
