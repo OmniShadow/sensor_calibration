@@ -18,7 +18,7 @@ target_link_libraries(calibrate PRIVATE meca500_driver)
 
 
 target_compile_features(calibrate PRIVATE cxx_std_17)
-target_include_directories(calibrate PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+target_include_directories(calibrate PRIVATE ".")
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
