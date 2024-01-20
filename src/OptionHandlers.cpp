@@ -8,13 +8,14 @@
 #include <vector>
 #include <cstring>
 #include <string>
-#include "csvlogger/CsvLogger.hpp"
+#include <map>
+
+#include "include/csvlogger/CsvLogger.hpp"
 #include "include/distance_sensor/include/DistanceSensor.hpp"
 #include "include/distance_sensor/include/UltrasonicSensor.hpp"
 #include "include/distance_sensor/include/InfraredSensor.hpp"
 #include "include/meca500_ethercat_cpp/Robot.hpp"
-#include <string.h>
-#include <map>
+
 #include "GlobalVariables.hpp"
 #include "HelperFunctions.hpp"
 
