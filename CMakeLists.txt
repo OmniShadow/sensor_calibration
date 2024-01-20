@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0.0)
 set(CMAKE_CXX_STANDARD 20)
 project(calibrate VERSION 0.1.0 LANGUAGES C CXX)
 
+file(GLOB_RECURSE SOURCES "*.cpp")
+
 add_executable(calibrate calibration.cpp)
 
 add_subdirectory(csvlogger)
@@ -16,6 +18,7 @@ target_link_libraries(calibrate PRIVATE meca500_driver)
 
 
 target_compile_features(calibrate PRIVATE cxx_std_17)
+target_include_directories(calibrate PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
