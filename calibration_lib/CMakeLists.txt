@@ -9,9 +9,9 @@ include_directories(
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_library(calibration_lib SHARED ${SOURCES})
 
-add_subdirectory(../csvlogger)
-add_subdirectory(../distance_sensor)
-add_subdirectory(../meca500_ethercat_cpp)
+add_subdirectory(csvlogger)
+add_subdirectory(distance_sensor)
+add_subdirectory(meca500_ethercat_cpp)
 
 target_link_libraries(calibration_lib PRIVATE csvlogger)
 target_link_libraries(calibration_lib PRIVATE distance_sensor)
