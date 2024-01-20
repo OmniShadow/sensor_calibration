@@ -20,6 +20,7 @@
 using namespace std;
 
 void display_usage();
+void setup_help_messages();
 void setup_handlers();
 int setup_options(map<string, string> options);
 map<string, string> parse_command_line(int argc, char *argv[]);

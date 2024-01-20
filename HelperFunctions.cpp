@@ -75,18 +75,48 @@ void display_usage()
     }
 }
 
+void setup_help_messages()
+{
+    helpMessage << "  --" << setw(optionWidth) << HELP_COMMAND << setw(descriptionWidth) << "Display this help message" << endl;
+
+    configMessage << "  --" << CONFIG_FROM_FILE_COMMAND << setw(optionWidth - strlen(CONFIG_FROM_FILE_COMMAND)) << "=\"path/to/configfile.txt\""
+                  << "Parse options from text file" << endl;
+
+    delayMessage << "  --" << MEASURE_DELAY_US_COMMAND << setw(optionWidth - strlen(MEASURE_DELAY_US_COMMAND)) << "=DELAY_VALUE_US";
+
+    measurementOptionsMessage << "  --" << MEASUREMENTS_OPTIONS_COMMAND << setw(optionWidth - strlen(MEASUREMENTS_OPTIONS_COMMAND)) << "=\"{min_measurement, max_measurement, step_size}\""
+                              << "Specify the measurement options [default {0, 170, 10} ]" << endl;
+
+    numberOfMeasurementsMessage << "  --" << NUMBER_OF_MEASUREMENTS_COMMAND << setw(optionWidth - strlen(NUMBER_OF_MEASUREMENTS_COMMAND)) << "=COUNT"
+                                << "Specify the number of measurements to take" << endl;
+
+    robotStartingPositionMessage << "Specify the starting pose of the meca500 [default {200, -170, 120, 90, 90, 0} ]" << endl
+                                 << endl;
+
+    sensorMessage
+        << "  --" << SENSOR_COMMAND << setw(optionWidth - strlen(SENSOR_COMMAND)) << "=TYPE"
+        << "Specify sensor type (e.g., infrared, ultrasonic)" << endl;
+
+    surfaceMessage << "  --" << SURFACE_TYPE_COMMAND << setw(optionWidth - strlen(SURFACE_TYPE_COMMAND)) << "=TYPE"
+                   << "Specify surface type for measurements" << endl;
+
+    robotMessage << "  --" << setw(optionWidth) << USE_ROBOT_COMMAND << setw(descriptionWidth) << "Use robot for measurements" << endl;
+
+    calibrationMessage << "Specify the calibration parameters of the sensor [default {1, 0} ]" << endl;
+}
+
 void setup_handlers()
 {
-    optionHandlers[HELP_COMMAND] = OptionHandler(handleHelp, helpMessage);
-    optionHandlers[CONFIG_FROM_FILE_COMMAND] = OptionHandler(handleConfig, configMessage);
-    optionHandlers[MEASURE_DELAY_US_COMMAND] = OptionHandler(handleDelay, delayMessage);
-    optionHandlers[MEASUREMENTS_OPTIONS_COMMAND] = OptionHandler(handleMeasurementsOption, measurementOptionsMessage);
-    optionHandlers[NUMBER_OF_MEASUREMENTS_COMMAND] = OptionHandler(handleNumberOfMeasurements, numberOfMeasurementsMessage);
-    optionHandlers[ROBOT_STARTING_POSITION_COMMAND] = OptionHandler(handleRobotStartingPosition, robotStartingPositionMessage);
-    optionHandlers[SENSOR_COMMAND] = OptionHandler(handleSensor, sensorMessage);
-    optionHandlers[SURFACE_TYPE_COMMAND] = OptionHandler(handleSurface, surfaceMessage);
-    optionHandlers[USE_ROBOT_COMMAND] = OptionHandler(handleRobot, robotMessage);
-    optionHandlers[CALIBRATION_COMMAND] = OptionHandler(handleCalibration, calibrationMessage);
+    optionHandlers[HELP_COMMAND] = OptionHandler(handleHelp, helpMessage.str());
+    optionHandlers[CONFIG_FROM_FILE_COMMAND] = OptionHandler(handleConfig, configMessage.str());
+    optionHandlers[MEASURE_DELAY_US_COMMAND] = OptionHandler(handleDelay, delayMessage.str());
+    optionHandlers[MEASUREMENTS_OPTIONS_COMMAND] = OptionHandler(handleMeasurementsOption, measurementOptionsMessage.str());
+    optionHandlers[NUMBER_OF_MEASUREMENTS_COMMAND] = OptionHandler(handleNumberOfMeasurements, numberOfMeasurementsMessage.str());
+    optionHandlers[ROBOT_STARTING_POSITION_COMMAND] = OptionHandler(handleRobotStartingPosition, robotStartingPositionMessage.str());
+    optionHandlers[SENSOR_COMMAND] = OptionHandler(handleSensor, sensorMessage.str());
+    optionHandlers[SURFACE_TYPE_COMMAND] = OptionHandler(handleSurface, surfaceMessage.str());
+    optionHandlers[USE_ROBOT_COMMAND] = OptionHandler(handleRobot, robotMessage.str());
+    optionHandlers[CALIBRATION_COMMAND] = OptionHandler(handleCalibration, calibrationMessage.str());
 }
 
 int setup_options(map<string, string> options)

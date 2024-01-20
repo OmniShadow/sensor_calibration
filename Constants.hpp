@@ -28,41 +28,24 @@
 
 using namespace std;
 
-const stringstream helpMessage;
-helpMessage << "  --" << setw(optionWidth) << HELP_COMMAND << setw(descriptionWidth) << "Display this help message" << endl;
+stringstream helpMessage;
 
-const string configMessage;
-configMessage << "  --" << CONFIG_FROM_FILE_COMMAND << setw(optionWidth - strlen(CONFIG_FROM_FILE_COMMAND)) << "=\"path/to/configfile.txt\""
-              << "Parse options from text file" << endl;
+stringstream configMessage;
 
-const string delayMessage;
-delayMessage << "  --" << MEASURE_DELAY_US_COMMAND << setw(optionWidth - strlen(MEASURE_DELAY_US_COMMAND)) << "=DELAY_VALUE_US";
+stringstream delayMessage;
 
-const string measurementOptionsMessage;
-measurementOptionsMessage << "  --" << MEASUREMENTS_OPTIONS_COMMAND << setw(optionWidth - strlen(MEASUREMENTS_OPTIONS_COMMAND)) << "=\"{min_measurement, max_measurement, step_size}\""
-                          << "Specify the measurement options [default {0, 170, 10} ]" << endl;
+stringstream measurementOptionsMessage;
 
-const string numberOfMeasurementsMessage;
-numberOfMeasurementsMessage << "  --" << NUMBER_OF_MEASUREMENTS_COMMAND << setw(optionWidth - strlen(NUMBER_OF_MEASUREMENTS_COMMAND)) << "=COUNT"
-                            << "Specify the number of measurements to take" << endl;
+stringstream numberOfMeasurementsMessage;
 
-const string robotStartingPositionMessage;
-robotStartingPositionMessage << "Specify the starting pose of the meca500 [default {200, -170, 120, 90, 90, 0} ]" << endl
-                             << endl;
+stringstream robotStartingPositionMessage;
 
-const string sensorMessage;
-sensorMessage
-    << "  --" << SENSOR_COMMAND << setw(optionWidth - strlen(SENSOR_COMMAND)) << "=TYPE"
-    << "Specify sensor type (e.g., infrared, ultrasonic)" << endl;
+stringstream sensorMessage;
 
-const string surfaceMessage;
-surfaceMessage << "  --" << SURFACE_TYPE_COMMAND << setw(optionWidth - strlen(SURFACE_TYPE_COMMAND)) << "=TYPE"
-               << "Specify surface type for measurements" << endl;
+stringstream surfaceMessage;
 
-const string robotMessage;
-robotMessage << "  --" << setw(optionWidth) << USE_ROBOT_COMMAND << setw(descriptionWidth) << "Use robot for measurements" << endl;
+stringstream robotMessage;
 
-const string calibrationMessage;
-calibrationMessage << "Specify the calibration parameters of the sensor [default {1, 0} ]" << endl;
+stringstream calibrationMessage;
 
 #endif

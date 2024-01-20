@@ -27,7 +27,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     /*INITIAL SETUP*/
-
+    setup_help_messages();
     setup_handlers();
 
     if (setup_options(parse_command_line(argc, argv)) != 0)
