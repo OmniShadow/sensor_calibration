@@ -16,10 +16,10 @@
 #include "distance_sensor/include/InfraredSensor.hpp"
 #include "meca500_ethercat_cpp/Robot.hpp"
 
-#include "Constants.hpp"
-#include "HelperFunctions.hpp"
-#include "OptionHandlers.hpp"
-#include "GlobalVariables.hpp"
+#include "calibration_lib/include/Constants.hpp"
+#include "calibration_lib/include/HelperFunctions.hpp"
+#include "calibration_lib/include/OptionHandlers.hpp"
+#include "calibration_lib/include/GlobalVariables.hpp"
 
 using namespace std;
 
