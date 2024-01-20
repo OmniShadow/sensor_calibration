@@ -8,11 +8,11 @@
 #include <string>
 #include <map>
 
-#include "include/csvlogger/CsvLogger.hpp"
-#include "include/distance_sensor/include/DistanceSensor.hpp"
-#include "include/distance_sensor/include/UltrasonicSensor.hpp"
-#include "include/distance_sensor/include/InfraredSensor.hpp"
-#include "include/meca500_ethercat_cpp/Robot.hpp"
+#include "csvlogger/CsvLogger.hpp"
+#include "distance_sensor/include/DistanceSensor.hpp"
+#include "distance_sensor/include/UltrasonicSensor.hpp"
+#include "distance_sensor/include/InfraredSensor.hpp"
+#include "meca500_ethercat_cpp/Robot.hpp"
 
 #include "Constants.hpp"
 #include "HelperFunctions.hpp"

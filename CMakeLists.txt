@@ -7,9 +7,9 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 add_executable(calibrate src/calibration.cpp)
 
-add_subdirectory(include/csvlogger)
-add_subdirectory(include/distance_sensor)
-add_subdirectory(include/meca500_ethercat_cpp)
+add_subdirectory(csvlogger)
+add_subdirectory(distance_sensor)
+add_subdirectory(meca500_ethercat_cpp)
 
 target_link_libraries(calibrate PRIVATE csvlogger)
 target_link_libraries(calibrate PRIVATE distance_sensor)

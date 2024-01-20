@@ -1,6 +1,12 @@
 #ifndef HELPER_FUNCTIONS_HPP
 #define HELPER_FUNCTIONS_HPP
 
+#include "csvlogger/CsvLogger.hpp"
+#include "distance_sensor/include/DistanceSensor.hpp"
+#include "distance_sensor/include/UltrasonicSensor.hpp"
+#include "distance_sensor/include/InfraredSensor.hpp"
+#include "meca500_ethercat_cpp/Robot.hpp"
+
 #include <stdio.h>
 #include <iomanip>
 #include <unistd.h>
