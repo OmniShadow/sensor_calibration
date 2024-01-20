@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.0.0)
+set(CMAKE_CXX_STANDARD 20)
+project(calibrate VERSION 0.1.0 LANGUAGES C CXX)
+
+
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+add_executable(calibrate src/calibration.cpp)
+
+add_subdirectory(include/csvlogger)
+add_subdirectory(include/distance_sensor)
+add_subdirectory(include/meca500_ethercat_cpp)
+
+target_compile_features(calibrate PRIVATE cxx_std_17)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
