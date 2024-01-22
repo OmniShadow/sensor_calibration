@@ -482,7 +482,8 @@ string handleRobotStartingPosition(string value)
 
 string handleSensor(string value)
 {
-    cout << left << setw(message_length) << "Sensor used: " << value << "\n";
+    cout << left << setw(message_length) << "Sensor used: " << value << "\nInitalising sensor" << endl;
+
     if (value == INFRARED_SENSOR_VALUE)
     {
         sensor = new InfraredSensor(InfraredSensor::USER_INPUT);
