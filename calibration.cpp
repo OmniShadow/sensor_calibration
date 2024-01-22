@@ -482,8 +482,7 @@ string handleRobotStartingPosition(string value)
 
 string handleSensor(string value)
 {
-    stringstream option_message;
-    option_message << left << setw(message_length) << "Sensor used: " << value << "\n";
+    cout << left << setw(message_length) << "Sensor used: " << value << "\n";
     if (value == INFRARED_SENSOR_VALUE)
     {
         sensor = new InfraredSensor(InfraredSensor::USER_INPUT);
@@ -499,7 +498,7 @@ string handleSensor(string value)
         exit(1);
     }
     sensor_type = value;
-    return option_message.str();
+    return "";
 }
 
 string handleNumberOfMeasurements(string value)
@@ -520,7 +519,7 @@ string handleNumberOfMeasurements(string value)
 string handleRobot(string value)
 {
     cout << "Using Meca500 robot\n"
-         << "Initialising robot EtherCAT interface\n";
+         << "Initialising robot EtherCAT interface" << endl;
     initialise_robot();
     return "";
 }
