@@ -429,7 +429,7 @@ vector<float> parse_string_to_vector(string input)
 string handleHelp(string value)
 {
     display_usage();
-
+    exit(0);
     return "";
 }
 
