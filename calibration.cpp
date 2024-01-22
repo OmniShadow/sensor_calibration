@@ -302,7 +302,7 @@ int setup_options(map<string, string> options)
         }
         else
         {
-            cerr << "Command [" << optionName << "] not found" << endl;
+            handleNotFound(optionName);
         }
     }
 
@@ -402,7 +402,7 @@ vector<float> parse_string_to_vector(string input)
 string handleHelp()
 {
     display_usage();
-    return 1;
+
     return option_message.str();
 }
 
@@ -414,13 +414,13 @@ string handleMeasurementsOption(string value)
     {
         cerr << "Invalid measurement options, not enough arguments" << endl;
         cerr << "Program will now exit..." << endl;
-        return 1;
+        exit(1);
     }
     if (measurement_options[0] >= measurement_options[1])
     {
         cerr << "Invalid measurement options, min_measurement can't be higher or equal to max_measurement" << endl;
         cerr << "Program will now exit..." << endl;
-        return 1;
+        exti(1);
     }
     min_measurement = measurement_options[0];
     max_measurement = measurement_options[1];
@@ -441,7 +441,7 @@ string handleRobotStartingPosition(string value)
     {
         cerr << "Invalid robot position, not enough arguments" << endl;
         cerr << "Program will now exit..." << endl;
-        return 1;
+        exit(1);
     }
     option_message << left << setw(message_length) << "Starting robot position: {";
     for (float pos : robot_position_values)
@@ -467,7 +467,7 @@ string handleSensor(string value)
     {
         cerr << "Invalid sensor type. Supported types: ultrasonic, infrared" << endl;
         cerr << "Program will now exit..." << endl;
-        return 1;
+        exit(1);
     }
     sensor_type = value;
     return option_message.str();
@@ -481,7 +481,7 @@ string handleNumberOfMeasurements(string value)
     {
         cerr << "Invalid number of measurements value" << endl;
         cerr << "Program will now exit..." << endl;
-        return 1;
+        exit(1);
     }
     option_message << left << setw(message_length) << "Number of measurements per cycle: " << value << "\n";
     number_of_measurements = int_value;
@@ -513,7 +513,7 @@ string handleDelay(string value)
     {
         cerr << "Invalid number of measures value" << endl;
         cerr << "Program will now exit..." << endl;
-        return 1;
+        exit(1);
     }
     option_message << left << setw(message_length) << "Measurement delay in us used: " << value << "\n";
     measurement_delay = int_value;
@@ -544,5 +544,6 @@ string handleCalibration(string value)
 string handleNotFound(string value)
 {
     stringstream option_message;
-    option_message << left << setw(message_length) << "Unknown option: " << command << "\n";
+    option_message << left << setw(message_length) << "Unknown command: " << value << "\n";
+    return option_message.str();
 }
