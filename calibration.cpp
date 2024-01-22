@@ -240,7 +240,7 @@ void display_usage()
          << "Options:" << endl;
     for (auto option : optionHandlers)
     {
-        cout << option.second.helpMessage << endl;
+        cout << option.second.helpMessage;
     }
 }
 
