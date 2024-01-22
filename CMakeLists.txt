@@ -7,7 +7,6 @@ add_executable(calibrate calibration.cpp)
 target_link_libraries(calibrate PRIVATE csvlogger)
 target_link_libraries(calibrate PRIVATE distance_sensor)
 target_link_libraries(calibrate PRIVATE meca500_driver)
-target_link_libraries(calibrate PRIVATE calibration_lib)
 
 target_compile_options(calibrate PRIVATE -Wall -pthread)
 target_link_libraries(calibrate PRIVATE pigpio rt)
