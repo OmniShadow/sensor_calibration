@@ -403,7 +403,7 @@ string handleHelp(string value)
 {
     display_usage();
 
-    return option_message.str();
+    return "";
 }
 
 string handleMeasurementsOption(string value)
