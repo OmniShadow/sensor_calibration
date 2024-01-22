@@ -420,7 +420,7 @@ string handleMeasurementsOption(string value)
     {
         cerr << "Invalid measurement options, min_measurement can't be higher or equal to max_measurement" << endl;
         cerr << "Program will now exit..." << endl;
-        exti(1);
+        exit(1);
     }
     min_measurement = measurement_options[0];
     max_measurement = measurement_options[1];
