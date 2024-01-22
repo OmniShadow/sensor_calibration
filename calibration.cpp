@@ -238,6 +238,7 @@ void display_usage()
 {
     cout << left << setw(optionWidth) << "Usage: ./calibrazione [OPTIONS]" << endl
          << "Options:" << endl;
+    
     for (auto option : optionHandlers)
     {
         cout << option.second.helpMessage;
@@ -259,7 +260,7 @@ void setup_help_messages()
     delayMessage
         << left
         << "  --" << MEASURE_DELAY_US_COMMAND << setw(optionWidth - strlen(MEASURE_DELAY_US_COMMAND))
-        << "=DELAY_VALUE_US";
+        << "=DELAY_VALUE_US" << endl;
 
     measurementOptionsMessage
         << left
