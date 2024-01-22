@@ -64,7 +64,7 @@ stringstream calibrationMessage;
 struct OptionHandler
 {
     using Handler = string (*)(string);
-    
+
     OptionHandler() : handler(nullptr), helpMessage("") {}
     OptionHandler(Handler func, const string &helpMsg)
         : handler(func), helpMessage(helpMsg) {}
@@ -246,35 +246,62 @@ void display_usage()
 
 void setup_help_messages()
 {
-    helpMessage << "  --" << setw(optionWidth) << HELP_COMMAND << setw(descriptionWidth) << "Display this help message" << endl;
+    helpMessage
+        << left
+        << "  --" << setw(optionWidth) << HELP_COMMAND << setw(descriptionWidth) << "Display this help message" << endl;
 
-    configMessage << "  --" << CONFIG_FROM_FILE_COMMAND << setw(optionWidth - strlen(CONFIG_FROM_FILE_COMMAND)) << "=\"path/to/configfile.txt\""
-                  << "Parse options from text file" << endl;
+    configMessage
+        << left
+        << "  --" << CONFIG_FROM_FILE_COMMAND << setw(optionWidth - strlen(CONFIG_FROM_FILE_COMMAND))
+        << "=\"path/to/configfile.txt\""
+        << "Parse options from text file" << endl;
 
-    delayMessage << "  --" << MEASURE_DELAY_US_COMMAND << setw(optionWidth - strlen(MEASURE_DELAY_US_COMMAND)) << "=DELAY_VALUE_US";
+    delayMessage
+        << left
+        << "  --" << MEASURE_DELAY_US_COMMAND << setw(optionWidth - strlen(MEASURE_DELAY_US_COMMAND))
+        << "=DELAY_VALUE_US";
 
-    measurementOptionsMessage << "  --" << MEASUREMENTS_OPTIONS_COMMAND << setw(optionWidth - strlen(MEASUREMENTS_OPTIONS_COMMAND)) << "=\"{min_measurement, max_measurement, step_size}\""
-                              << "Specify the measurement options [default {0, 170, 10} ]" << endl;
+    measurementOptionsMessage
+        << left
+        << "  --" << MEASUREMENTS_OPTIONS_COMMAND << setw(optionWidth - strlen(MEASUREMENTS_OPTIONS_COMMAND))
+        << "=\"{min_measurement, max_measurement, step_size}\""
+        << "Specify the measurement options [default {0, 170, 10} ]" << endl;
 
-    numberOfMeasurementsMessage << "  --" << NUMBER_OF_MEASUREMENTS_COMMAND << setw(optionWidth - strlen(NUMBER_OF_MEASUREMENTS_COMMAND)) << "=COUNT"
-                                << "Specify the number of measurements to take" << endl;
+    numberOfMeasurementsMessage
+        << left
+        << "  --" << NUMBER_OF_MEASUREMENTS_COMMAND << setw(optionWidth - strlen(NUMBER_OF_MEASUREMENTS_COMMAND))
+        << "=COUNT"
+        << "Specify the number of measurements to take" << endl;
 
-    robotStartingPositionMessage << "  --" << ROBOT_STARTING_POSITION_COMMAND << setw(optionWidth - strlen(ROBOT_STARTING_POSITION_COMMAND)) << "=\"{x,y,z,alpha,beta,gamma}\""
-                                 << "Specify the starting pose of the meca500 [default {200, -170, 120, 90, 90, 0} ]" << endl
-                                 << endl;
+    robotStartingPositionMessage
+        << left
+        << "  --" << ROBOT_STARTING_POSITION_COMMAND << setw(optionWidth - strlen(ROBOT_STARTING_POSITION_COMMAND))
+        << "=\"{x,y,z,alpha,beta,gamma}\""
+        << "Specify the starting pose of the meca500 [default {200, -170, 120, 90, 90, 0} ]" << endl
+        << endl;
 
     sensorMessage
-        << "  --" << SENSOR_COMMAND << setw(optionWidth - strlen(SENSOR_COMMAND)) << "=TYPE"
+        << left
+        << "  --" << SENSOR_COMMAND << setw(optionWidth - strlen(SENSOR_COMMAND))
+        << "=TYPE"
         << "Specify sensor type (e.g., infrared, ultrasonic)" << endl;
 
-    surfaceMessage << "  --" << SURFACE_TYPE_COMMAND << setw(optionWidth - strlen(SURFACE_TYPE_COMMAND)) << "=TYPE"
-                   << "Specify surface type for measurements" << endl;
+    surfaceMessage
+        << left
+        << "  --" << SURFACE_TYPE_COMMAND << setw(optionWidth - strlen(SURFACE_TYPE_COMMAND))
+        << "=TYPE"
+        << "Specify surface type for measurements" << endl;
 
-    robotMessage << "  --" << setw(optionWidth) << USE_ROBOT_COMMAND << setw(descriptionWidth) << "Use robot for measurements" << endl;
+    robotMessage
+        << left
+        << "  --" << setw(optionWidth) << USE_ROBOT_COMMAND << setw(descriptionWidth) << "Use robot for measurements" << endl;
 
-    calibrationMessage << "  --" << CALIBRATION_COMMAND << setw(optionWidth - strlen(CALIBRATION_COMMAND)) << "=\"{m, q}\""
-                       << "Specify the calibration parameters of the sensor [default {1, 0} ]" << endl
-                       << endl;
+    calibrationMessage
+        << left
+        << "  --" << CALIBRATION_COMMAND << setw(optionWidth - strlen(CALIBRATION_COMMAND))
+        << "=\"{m, q}\""
+        << "Specify the calibration parameters of the sensor [default {1, 0} ]" << endl
+        << endl;
 }
 
 void setup_handlers()
