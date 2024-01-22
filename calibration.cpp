@@ -273,7 +273,7 @@ void setup_help_messages()
 
     calibrationMessage << "  --" << CALIBRATION_COMMAND << setw(optionWidth - strlen(CALIBRATION_COMMAND)) << "=\"{m, q}\""
                        << "Specify the calibration parameters of the sensor [default {1, 0} ]" << endl
-                       << endl
+                       << endl;
 }
 
 void setup_handlers()
