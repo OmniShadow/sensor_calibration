@@ -238,7 +238,7 @@ void display_usage()
 {
     cout << left << setw(optionWidth) << "Usage: ./calibrazione [OPTIONS]" << endl
          << "Options:" << endl;
-    
+
     for (auto option : optionHandlers)
     {
         cout << option.second.helpMessage;
@@ -278,8 +278,7 @@ void setup_help_messages()
         << left
         << "  --" << ROBOT_STARTING_POSITION_COMMAND << setw(optionWidth - strlen(ROBOT_STARTING_POSITION_COMMAND))
         << "=\"{x,y,z,alpha,beta,gamma}\""
-        << "Specify the starting pose of the meca500 [default {200, -170, 120, 90, 90, 0} ]" << endl
-        << endl;
+        << "Specify the starting pose of the meca500 [default {200, -170, 120, 90, 90, 0} ]" << endl;
 
     sensorMessage
         << left
