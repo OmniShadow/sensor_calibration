@@ -64,7 +64,8 @@ stringstream calibrationMessage;
 struct OptionHandler
 {
     using Handler = string (*)(string);
-
+    
+    OptionHandler() : handler(nullptr), helpMessage("") {}
     OptionHandler(Handler func, const string &helpMsg)
         : handler(func), helpMessage(helpMsg) {}
 
