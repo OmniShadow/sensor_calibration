@@ -87,7 +87,7 @@ void write_measurements_to_csv(vector<float> measurments, string file_path);
 /************************************************/
 
 /*** COMMAND HANDLERS ***/
-string handleHelp();
+string handleHelp(string value);
 string handleMeasurementsOption(string value);
 string handleRobotStartingPosition(string value);
 string handleSensor(string value);
@@ -399,7 +399,7 @@ vector<float> parse_string_to_vector(string input)
     return result;
 }
 
-string handleHelp()
+string handleHelp(string value)
 {
     display_usage();
 
