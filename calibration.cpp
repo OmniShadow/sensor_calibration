@@ -19,15 +19,16 @@
 #define HELP_COMMAND "help"
 #define CONFIG_FROM_FILE_COMMAND "config"
 #define SENSOR_COMMAND "sensor" // REQUIRED sensor specifier command [--sensor]
-#define CALIBRATION_COMMAND "calibration"
-#define INFRARED_SENSOR_VALUE "infrared"              // infrared sensor specifier [--sensor=infrared]
-#define ULTRASONIC_SENSOR_VALUE "ultrasonic"          // ultrasonic sensor specifier [--sensor=ultrasonic]
+#define CALIBRATION_COMMAND "sensor_calibration"
 #define SURFACE_TYPE_COMMAND "surface"                // surface specifier [--surface="surface_name"]
 #define NUMBER_OF_MEASUREMENTS_COMMAND "measurements" // number of measurements per cycle [--measurements=number_of_measurements]
 #define USE_ROBOT_COMMAND "userobot"                  // command flag to use meca500 robot [--userobot]
 #define MEASURE_DELAY_US_COMMAND "delay"              // delay between measurements in micro seconds [--delay=microseconds]
 #define ROBOT_STARTING_POSITION_COMMAND "position"    // starting pose of the meca500
 #define MEASUREMENTS_OPTIONS_COMMAND "options"        // command to set the measurement options [min_measurement,max_measurement,step_size]
+
+#define INFRARED_SENSOR_VALUE "infrared"     // infrared sensor specifier [--sensor=infrared]
+#define ULTRASONIC_SENSOR_VALUE "ultrasonic" // ultrasonic sensor specifier [--sensor=ultrasonic]
 
 /* DEFAULT VALUES */
 #define MEASUREMENTS_PER_CYCLE_DEFAULT 100   // default number of measurements per cycle
@@ -260,7 +261,8 @@ void setup_help_messages()
     delayMessage
         << left
         << "  --" << MEASURE_DELAY_US_COMMAND << setw(optionWidth - strlen(MEASURE_DELAY_US_COMMAND))
-        << "=DELAY_VALUE_US" << "Specify the delay between each measurement in microseconds" << endl;
+        << "=DELAY_VALUE_US"
+        << "Specify the delay between each measurement in microseconds" << endl;
 
     measurementOptionsMessage
         << left
@@ -517,11 +519,10 @@ string handleNumberOfMeasurements(string value)
 
 string handleRobot(string value)
 {
-    stringstream option_message;
-    option_message << "Using Meca500 robot\n"
-                   << "Initialising robot EtherCAT interface\n";
+    cout << "Using Meca500 robot\n"
+         << "Initialising robot EtherCAT interface\n";
     initialise_robot();
-    return option_message.str();
+    return "";
 }
 
 string handleSurface(string value)
