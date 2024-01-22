@@ -260,7 +260,7 @@ void setup_help_messages()
     delayMessage
         << left
         << "  --" << MEASURE_DELAY_US_COMMAND << setw(optionWidth - strlen(MEASURE_DELAY_US_COMMAND))
-        << "=DELAY_VALUE_US" << endl;
+        << "=DELAY_VALUE_US" << << "Specify the delay between each measurement in microseconds" << endl;
 
     measurementOptionsMessage
         << left
