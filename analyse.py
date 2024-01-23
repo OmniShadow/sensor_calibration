@@ -97,6 +97,7 @@ def analyse_files(folder_path):
         # initializing stats file
         create_folder(sub_folder_path + "/stats")
         create_folder(sub_folder_path + "/plots")
+        create_folder(sub_folder_path + "/histograms")
 
         stats = open(sub_folder_path+"/stats/stats.csv", "w")
 
@@ -178,7 +179,7 @@ def analyse_files(folder_path):
             plt.title("Distribuzione dei valori")
             plt.tight_layout()
 
-            plt.savefig(sub_folder_path + "/plots/histogram_" +
+            plt.savefig(sub_folder_path + "/histograms/histogram_" +
                         measurements_csv_file_name + ".png")
             plt.close()
             # plt.show()
@@ -257,7 +258,7 @@ def analyse_files(folder_path):
         plt.grid(True)  # Optional: Add grid lines
 
         # Step 5: Show or Save the Plot (Optional)
-        plt.savefig(sub_folder_path+"/plots/stats_plot.png")
+        plt.savefig(sub_folder_path+"/stats/stats_plot.png")
         # plt.show()
         plt.close()
 
