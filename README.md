@@ -8,7 +8,7 @@ If you are using cmake, after you've cloned the repository into your disposal, d
 
 ## How to execute 1st program: calibration
 
-If you desire to find calibration curve for your sensor, set the parameters in "config.txt" and run "calibrazione".
+If you desire to find calibration curve for your sensor, set the parameters in "config.txt" and run "calibrazione --config=config.txt".
 Put the obstacle in zero position and wait for Meca500 to take data. It will write some csv files in ./measurements/..
 
 Then to analyze execute the python script "analyze.py" passing the specified path. It will generates some plots in the analyzed folders.
