@@ -15,6 +15,9 @@ marker_size = 2
 def is_analysed(path):
     return os.path.exists(path+"/.analysed")
 
+def has_to_ignore(path):
+    return os.path.exists(path+"/.ignore")
+
 
 def create_folder(folder_path):
     # Check if the folder exists
@@ -91,13 +94,12 @@ def analyse_files(folder_path):
     for surface_name in surface_folders:
 
         sub_folder_path = folder_path + "/" + surface_name
-        if (is_analysed(sub_folder_path)):
+        if (is_analysed(sub_folder_path) or has_to_ignore(sub_folder_path)):
            continue
 
         # initializing stats file
         create_folder(sub_folder_path + "/stats")
         create_folder(sub_folder_path + "/plots")
-        create_folder(sub_folder_path + "/histograms")
 
         stats = open(sub_folder_path+"/stats/stats.csv", "w")
 
@@ -129,7 +131,7 @@ def analyse_files(folder_path):
             )
             plt.title(measurements_csv_file_name)
             plt.xlabel("Indice misura")
-            plt.ylabel("Distanza misurata in mm")
+            plt.ylabel("Distanza misurata [mm]")
             plt.ylim(0, 255)
             plt.tight_layout()
             plt.grid(True)
@@ -168,18 +170,18 @@ def analyse_files(folder_path):
             plt.hist(measurements_data_frame["distance"].astype(float), bins=20, color="skyblue",
                      edgecolor="black", density=True, stacked=True)
             #plt.plot(x_values, y_values, 'r-', label='Desired distribution')
-            plt.plot(x_values, y_values_m, 'b-', label='Measured distribution')
+            plt.plot(x_values, y_values_m, 'b-', label='Distribuzione')
             plt.legend()
 
             plt.xlim(min_value, max(misura, max_value) + desired_tollerance)
 
             # Add labels and title
-            plt.xlabel("Valore misura mm")
+            plt.xlabel("Valore di misura [mm]")
             plt.ylabel("Probabilità")
             plt.title("Distribuzione dei valori")
             plt.tight_layout()
 
-            plt.savefig(sub_folder_path + "/histograms/histogram_" +
+            plt.savefig(sub_folder_path + "/plots/histogram_" +
                         measurements_csv_file_name + ".png")
             plt.close()
             # plt.show()
@@ -209,7 +211,7 @@ def analyse_files(folder_path):
             stats_df["valore"],
             predicted_values,
             color='brown',
-            label='Linear Regression Curve',
+            label='best fit',
             linestyle="-",
             linewidth=2,
         )
@@ -220,7 +222,7 @@ def analyse_files(folder_path):
             linewidth=2,
             markersize=marker_size,
             color="black",
-            label="valore misurato mm",
+            label="riferimento",
         )
         plt.plot(
             stats_df["valore"].astype(float),
@@ -230,7 +232,7 @@ def analyse_files(folder_path):
             linewidth=0.5,
             markersize=marker_size,
             color="b",
-            label="media misure mm",
+            label="media misure [mm]",
         )
         plt.plot(
             stats_df["valore"].astype(float),
@@ -240,7 +242,7 @@ def analyse_files(folder_path):
             linewidth=0.5,
             markersize=marker_size,
             color="r",
-            label="deviazione standard mm",
+            label="deviazione standard [mm]",
         )
         plt.plot(
             stats_df["valore"].astype(float),
@@ -250,15 +252,15 @@ def analyse_files(folder_path):
             linewidth=0.5,
             markersize=marker_size,
             color="green",
-            label="errore tra media e riferimento  mm",
+            label="differenza tra media e riferimento  [mm]",
         )
-        plt.xlabel("misura aspettata mm")
-        plt.ylabel("media misurata mm")
+        plt.xlabel("misura attesa [mm]")
+        plt.ylabel("media misurata [mm]")
         plt.legend()
         plt.grid(True)  # Optional: Add grid lines
 
         # Step 5: Show or Save the Plot (Optional)
-        plt.savefig(sub_folder_path+"/stats/stats_plot.png")
+        plt.savefig(sub_folder_path+"/plots/stats_plot.png")
         # plt.show()
         plt.close()
 

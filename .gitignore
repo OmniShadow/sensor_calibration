@@ -1,9 +1,7 @@
 .vscode
 CMakeCache.txt
-measurements
 build
 cmake_install.cmake
 Makefile
 CPackConfig.cmake
 CPackSourceConfig.cmake
-misure buone
